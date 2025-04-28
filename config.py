@@ -1,7 +1,6 @@
-import os
+import streamlit as st
 
 class Config:
-    openai_api_key = os.getenv("OPENAI_API_KEY")
-    supabase_url = os.getenv("SUPABASE_URL")
-    supabase_key = os.getenv("SUPABASE_KEY")
-    serper_api_key = os.getenv("SERPER_API_KEY")
+    openai_api_key = st.secrets["OPENAI_API_KEY"]
+    supabase_url = st.secrets["SUPABASE_URL"]
+    supabase_key = st.secrets["SUPABASE_KEY"]
