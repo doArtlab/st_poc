@@ -20,7 +20,7 @@ def generate_response(query: str):
     return text
 
 if __name__ == "__main__":
-    st.title("POC 질문 답변 서비스")
+    st.title("POC 제품 정보 조회 모듈 (From 올리브영 상품페이지, 고객 리뷰 정보)")
 
     # 세션 상태에 메시지 저장
     if "messages" not in st.session_state:
