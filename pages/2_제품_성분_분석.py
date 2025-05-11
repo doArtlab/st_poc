@@ -1,13 +1,13 @@
 from config import Config
 from openai import OpenAI
-from functions import get_contents_from_query
+from functions import get_ingredients_from_query
 from openai_helpers import generate_text
 import streamlit as st
 
 client = OpenAI(api_key=Config.openai_api_key)
 
 def generate_response(query: str):
-    docs = get_contents_from_query(query)
+    docs = get_ingredients_from_query(query)
     content ='\n'.join(docs)
     text = generate_text(f"""
                         당신은 제품에 대한 질문에 대해 제공된 Text 내에서 답을 찾는 POC 용 AI 에이전트입니다. 
@@ -20,7 +20,7 @@ def generate_response(query: str):
     return text
 
 if __name__ == "__main__":
-    st.title("POC 제품 정보 조회 모듈 (From 올리브영 상품페이지, 고객 리뷰 정보)")
+    st.title("POC 제품 성분 정보 조회 모듈 (From 올리브영 전성분 페이지)")
 
     # 세션 상태에 메시지 저장
     if "messages" not in st.session_state:
@@ -32,7 +32,7 @@ if __name__ == "__main__":
             st.markdown(msg["content"])
 
     # 사용자 입력
-    prompt = st.chat_input("메시지를 입력하세요")
+    prompt = st.chat_input("어떤 제품의 성분 정보를 알고 싶으신가요?")
 
     # 입력이 들어오면 처리
     if prompt:
